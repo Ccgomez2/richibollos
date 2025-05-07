@@ -1,0 +1,298 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #a94444;
+  color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.encabezado {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #822727;
+  color: #ffffff;
+  position: relative;
+}
+
+.encabezado h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.encabezado .eslogan {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #f7dcdc;
+}
+
+.decorativa-izquierda,
+.decorativa-derecha {
+  position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  z-index: 1;
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.decorativa-izquierda {
+  top: 2.9rem;
+  left: 2rem;
+  width: 160px;
+  height: 160px;
+}
+
+.decorativa-derecha {
+  top: 2.9rem;
+  right: 2rem;
+  width: 160px;
+  height: 160px;
+}
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.formulario {
+  background: #ffffffe9;
+  color: #000;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.formulario h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #0a1a2f;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #a13232;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #7d1212;
+}
+
+
+.contadores {
+  background-color: #822727;
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.contadores h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.grid-contadores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
+}
+
+.contador {
+  flex: 1;
+  min-width: 200px;
+  background: #a94444a0;
+  padding: 1rem;
+  border-radius: 0.8rem;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+}
+
+.contador h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.sabor-fresa { border-left: 5px solid #ff5c8a; }
+.sabor-vainilla { border-left: 5px solid #ffe066; }
+.sabor-chocolate { border-left: 5px solid #7B3F00; }
+.General { border-left: 5px solid #3096b0; }
+
+.galeria-sabores {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.sabor {
+  text-align: center;
+}
+
+.sabor img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+/*para que se agrande*/
+.sabor img:hover { 
+  transform: scale(1.05);
+}
+
+.sabor p {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.sobre-nosotros {
+  background-color: #82272794;
+  color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.sobre-nosotros h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #f8f8f8;
+}
+
+.contenido-sobre-nosotros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.texto-sobre-nosotros {
+  flex: 1;
+  min-width: 250px;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+@media (max-width: 480px) {
+  .formulario {
+    padding: 1.2rem;
+  }
+
+  .formulario h2 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .encabezado h1 {
+    font-size: 2rem;
+  }
+
+  .encabezado .eslogan {
+    font-size: 1rem;
+  }
+
+  .decorativa-izquierda,
+  .decorativa-derecha {
+    width: 100px;
+    height: 100px;
+    top: 1.5rem;
+  }
+
+  .decorativa-izquierda {
+    left: 0.5rem;
+  }
+
+  .decorativa-derecha {
+    right: 0.5rem;
+  }
+
+  .grid-contadores {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contador {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .galeria-sabores {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenido-sobre-nosotros {
+    flex-direction: column;
+    text-align: justify;
+    padding: 1rem;
+  }
+
+  .texto-sobre-nosotros {
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .sobre-nosotros h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Se adapata a los moviles-->
+  <title>Bollikaos</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos CSS externo -->
+</head>
+
+<body>
+  <header class="encabezado">
+
+    <h1>Bollikaos</h1>
+    <p class="eslogan">¡Explosión de sabor en cada bocado!</p>
+  </header>
+
+  <!-- Contenido principal del sitio -->
+  <main>
+    
+    <section class="contadores">
+      <h2>Estado de producción Personalizada</h2>
+      <div class="grid-contadores">
+        <div class="contador sabor-fresa">
+          <h3>Fresa</h3>
+          <p>Pedidos: <span id="pedidos-fresa">0</span></p>
+          <p>Hechos: <span id="hechos-fresa">0</span></p>
+        </div>
+        <div class="contador sabor-vainilla">
+          <h3>Vainilla</h3>
+          <p>Pedidos: <span id="pedidos-vainilla">0</span></p>
+          <p>Hechos: <span id="hechos-vainilla">0</span></p>
+        </div>
+        <div class="contador sabor-chocolate">
+          <h3>Chocolate</h3>
+          <p>Pedidos: <span id="pedidos-chocolate">0</span></p>
+          <p>Hechos: <span id="hechos-chocolate">0</span></p>
+        </div>
+        <div class="contador General">
+          <h3>Total</h3>
+          <p>Hechos: <span id="hechos">0</span></p>
+          <p>Defectuosos: <span id="defectuosos">0</span></p>
+        </div>
+    </section>
+    <section class="galeria-sabores">
+      <div class="sabor">
+        <img src="foto/fresa.png" alt="Bollo de fresa">
+        <p>Fresa</p>
+      </div>
+      <div class="sabor">
+        <img src="foto/vainilla.png" alt="Bollo de vainilla">
+        <p>Vainilla</p>
+      </div>
+      <div class="sabor">
+        <img src="foto/chocolate.png" alt="Bollo de chocolate">
+        <p>Chocolate</p>
+      </div>
+    </section>
+   
+    <section class="sobre-nosotros">
+      <h2>¿Quiénes somos?</h2>
+      <div class="contenido-sobre-nosotros">
+        <!-- <img src="foto/equipo.jpg" alt="Nuestro equipo" class="imagen-equipo">-->
+        <div class="texto-sobre-nosotros">
+          <p>Somos un equipo de 4 estudiantes apasionados por la tecnologia y la creatividad. 
+            En Bollikaos unimos lo mejor de ambos mundos para ofrecer bollos personalizados a los usuarios, 
+            preparados al instante mediante un sistema automatizado controlado por una interfaz web y robots. Además, 
+            ofrecemos servicio de producción en masa para empresas. </p>
+          <p>Desde la elección del sabor hasta el seguimiento de la producción, tú tienes el control. </p>
+        </div>
+      </div>
+    </section>
+    
+    <h2>No pierdas la oportunidad de probar los bolliKaos 🥐</h2>
+    <section class="formulario"> <!-- Sección dedicada al formulario -->
+      <h2>Formulario de pedido</h2> <!-- Subtítulo de la sección -->
+
+      <!-- Inicio del formulario -->
+      <form id="pedidoForm">
+        
+        <!-- Campo para el nombre del cliente -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <!-- Selector de sabor -->
+        <label for="sabor">Sabor:</label>
+        <select id="sabor" name="sabor" required>
+          <option value="">-- Selecciona un sabor --</option> 
+          <option value="fresa">Fresa</option>
+          <option value="vainilla">Vainilla</option>
+          <option value="chocolate">Chocolate</option>
+        </select>
+
+        <!-- Campo numérico para elegir la cantidad de bollos -->
+        <label for="cantidad">Número de bollos (1-3):</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" max="3" required>
+
+        <!-- Botón para enviar el formulario -->
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    
+  </main>
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
+  <script src="script.js"></script> <!-- tu lógica de envío -->
+  </body>
+  </html>
+  
