@@ -20,9 +20,9 @@ def index():
 def js():
     return send_from_directory(".", "script.js")
 
-@app.route("/style.css")
+@app.route("/styles.css")
 def css():
-    return send_from_directory(".", "style.css")
+    return send_from_directory(".", "styles.css")
 
 @app.route("/estado")
 def estado():
