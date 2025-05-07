@@ -24,6 +24,10 @@ def js():
 def css():
     return send_from_directory(".", "styles.css")
 
+@app.route("/foto/<path:filename>")
+def foto(filename):
+    return send_from_directory("foto", filename)
+
 @app.route("/estado")
 def estado():
     pedidos = query_db("SELECT sabor, COUNT(*) FROM pedidos GROUP BY sabor;")
