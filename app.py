@@ -71,6 +71,11 @@ def nuevo_pedido():
                 "INSERT INTO pedidos (nombre, sabor, cantidad) VALUES (%s, %s, %s)",
                 (nombre, sabor, cantidad)
             )
+             for _ in range(cantidad):
+                cur.execute(
+                    "INSERT INTO hechos (sabor) VALUES (%s)",
+                    (sabor,)
+                )
             conn.commit()
 
     # Publicar mensaje MQTT
