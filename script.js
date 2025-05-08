@@ -12,7 +12,7 @@ client.connect({
 // Se ejecuta cuando se establece conexión con el broker
 function onConnect() {
   console.log("Conectado a broker MQTT EMQX");
-
+  client.subscribe("richi5/giirob/esp32/enviar");
   // Activamos el envío del formulario solo si estamos conectados
   document.getElementById("pedidoForm").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -54,20 +54,23 @@ function onConnect() {
     .then(data => {
       console.log("🗃️ Pedido guardado en la base de datos:", data);
     
-      // Actualizar contadores tras guardar en base de datos
-      fetch("/estado")
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById("pedidos-fresa").textContent = data.fresa.pedidos;
-          document.getElementById("pedidos-vainilla").textContent = data.vainilla.pedidos;
-          document.getElementById("pedidos-chocolate").textContent = data.chocolate.pedidos;
-          document.getElementById("hechos-fresa").textContent = data.fresa.hechos;
-          document.getElementById("hechos-vainilla").textContent = data.vainilla.hechos;
-          document.getElementById("hechos-chocolate").textContent = data.chocolate.hechos;
-          document.getElementById("hechos").textContent = data.total.hechos;
-          document.getElementById("defectuosos").textContent = data.total.defectuosos;
-        })
-        .catch(err => console.error("Error actualizando contadores:", err));
+     // Actualizar contadores tras guardar en base de datos
+    fetch("/estado")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("pedidos-fresa").textContent = data.fresa.pedidos;
+        document.getElementById("pedidos-vainilla").textContent = data.vainilla.pedidos;
+        document.getElementById("pedidos-chocolate").textContent = data.chocolate.pedidos;
+    
+        document.getElementById("hechos-fresa").textContent = data.fresa.hechos;
+        document.getElementById("hechos-vainilla").textContent = data.vainilla.hechos;
+        document.getElementById("hechos-chocolate").textContent = data.chocolate.hechos;
+    
+        document.getElementById("hechos").textContent = data.total.hechos;
+        document.getElementById("defectuosos").textContent = data.total.defectuosos;
+      })
+      .catch(err => console.error("❌ Error al actualizar contadores desde /estado:", err));
+
     })
 
     .catch(err => {
@@ -86,7 +89,7 @@ function onConnect() {
     console.log("📤 Pedido enviado:", jsonPedido);
     alert("¡Pedido enviado con éxito!");
 
-  client.subscribe("richi5/giirob/esp32/enviar");
+  
   client.onMessageArrived = function (message) {
   const data = JSON.parse(message.payloadString);
   if (data.evento === "actualizar_contadores") {
@@ -99,3 +102,20 @@ function onConnect() {
 };
   });
 }
+
+setInterval(() => {
+  fetch("/estado")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("pedidos-fresa").textContent = data.fresa.pedidos;
+      document.getElementById("pedidos-vainilla").textContent = data.vainilla.pedidos;
+      document.getElementById("pedidos-chocolate").textContent = data.chocolate.pedidos;
+      document.getElementById("hechos-fresa").textContent = data.fresa.hechos;
+      document.getElementById("hechos-vainilla").textContent = data.vainilla.hechos;
+      document.getElementById("hechos-chocolate").textContent = data.chocolate.hechos;
+      document.getElementById("hechos").textContent = data.total.hechos;
+      document.getElementById("defectuosos").textContent = data.total.defectuosos;
+    })
+    .catch(err => console.error("❌ Error en actualización periódica:", err));
+}, 10000); // cada 10 segundos
+
