@@ -53,7 +53,23 @@ function onConnect() {
     })
     .then(data => {
       console.log("🗃️ Pedido guardado en la base de datos:", data);
+    
+      // Actualizar contadores tras guardar en base de datos
+      fetch("/estado")
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("pedidos-fresa").textContent = data.fresa.pedidos;
+          document.getElementById("pedidos-vainilla").textContent = data.vainilla.pedidos;
+          document.getElementById("pedidos-chocolate").textContent = data.chocolate.pedidos;
+          document.getElementById("hechos-fresa").textContent = data.fresa.hechos;
+          document.getElementById("hechos-vainilla").textContent = data.vainilla.hechos;
+          document.getElementById("hechos-chocolate").textContent = data.chocolate.hechos;
+          document.getElementById("hechos").textContent = data.total.hechos;
+          document.getElementById("defectuosos").textContent = data.total.defectuosos;
+        })
+        .catch(err => console.error("Error actualizando contadores:", err));
     })
+
     .catch(err => {
       console.error("Error guardando en base de datos:", err);
     });
