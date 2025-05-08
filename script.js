@@ -36,6 +36,27 @@ function onConnect() {
     const message = new Paho.MQTT.Message(JSON.stringify(jsonPedido));
     message.destinationName = "richi5/giirob/esp32/recibir";
     client.send(message);
+
+        // También enviamos los datos al backend para guardar en la base de datos
+    fetch("/pedido", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: `nombre=${encodeURIComponent(nombre)}&sabor=${encodeURIComponent(sabor)}&cantidad=${cantidad}`
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Error al guardar en base de datos");
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log("🗃️ Pedido guardado en la base de datos:", data);
+    })
+    .catch(err => {
+      console.error("Error guardando en base de datos:", err);
+    });
    
     const submitButton = document.querySelector("button[type='submit']");
     submitButton.disabled = true;
