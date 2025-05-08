@@ -83,7 +83,7 @@ def nuevo_pedido():
         "sabor": sabor,
         "cantidad": cantidad
     })
-    client.publish("richi5/giirob/pr2/enviar/web", payload)
+    client.publish("richi5/giirob/pr2/enviar", payload)
     client.loop_stop()
 
     return "Pedido procesado correctamente"
