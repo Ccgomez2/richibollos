@@ -2,6 +2,11 @@ from flask import Flask, send_from_directory, jsonify
 import psycopg2
 import os
 
+from flask import request
+import json
+import paho.mqtt.client as mqtt
+
+
 app = Flask(__name__)
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
@@ -52,3 +57,34 @@ def estado():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/pedido", methods=["POST"])
+def nuevo_pedido():
+    nombre = request.form.get("nombre")
+    sabor = request.form.get("sabor")
+    cantidad = int(request.form.get("cantidad"))
+
+    # Guardar en la base de datos
+    with psycopg2.connect(DATABASE_URL) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "INSERT INTO pedidos (nombre, sabor, cantidad) VALUES (%s, %s, %s)",
+                (nombre, sabor, cantidad)
+            )
+            conn.commit()
+
+    # Publicar mensaje MQTT
+    client = mqtt.Client(transport="websockets")
+    client.connect("broker.emqx.io", 8084, 60)
+    client.loop_start()
+    payload = json.dumps({
+        "evento": "nuevo_pedido",
+        "nombre": nombre,
+        "sabor": sabor,
+        "cantidad": cantidad
+    })
+    client.publish("richi5/giirob/pr2/enviar/web", payload)
+    client.loop_stop()
+
+    return "Pedido procesado correctamente"
+
