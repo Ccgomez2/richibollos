@@ -343,23 +343,6 @@ button:hover {
 }
 
 @media (max-width: 480px) {
-  .miembro img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .miembro p {
-    font-size: 0.9rem;
-  }
-
-  .contenido-sobre-nosotros {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-
-@media (max-width: 480px) {
   html {
     font-size: 14px; /* Reduce tamaño base en móvil */
   }
@@ -456,28 +439,54 @@ button:hover {
     top: 0.7rem;
     left: 0.7rem;
   }
-  .barra-navegacion {
+  .miembro img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .miembro p {
+    font-size: 0.9rem;
+  }
+
+  .contenido-sobre-nosotros {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+    align-items: center;
+  }
+  .barra-navegacion {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
   }
 
   .logo {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
   }
 
   .nombre-marca {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+  }
+
+  .logo-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
   }
 
   .menu-navegacion {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.8rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex: 2;
   }
 
   .menu-navegacion a {
     font-size: 1rem;
+    white-space: nowrap;
   }
 }
