@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Se adapata a los moviles-->
-  <title>Bollikaos</title>
+  <title>BOLLIKAO'S</title>
   <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos CSS externo -->
+  
 </head>
 
 <body>
-  <header class="encabezado">
-
-    <h1>Bollikaos</h1>
-    <p class="eslogan">¡Explosión de sabor en cada bocado!</p>
+  <header class="barra-navegacion">
+    <div class="logo-contenedor">
+      <img src="LOGO3.png" alt="Logo BollyKaos" class="logo">
+      <span class="nombre-marca">Bollikaos</span>
+    </div>
+    <nav class="menu-navegacion">
+      <a href="#produccion">Planta de Producción</a>
+      <a href="#materiales">Materiales</a>
+      <a href="nosotros.html">Nosotros</a>
+    </nav>
   </header>
+  
 
   <!-- Contenido principal del sitio -->
   <main>
@@ -55,20 +63,7 @@
         <p>Chocolate</p>
       </div>
     </section>
-   
-    <section class="sobre-nosotros">
-      <h2>¿Quiénes somos?</h2>
-      <div class="contenido-sobre-nosotros">
-        <!-- <img src="foto/equipo.jpg" alt="Nuestro equipo" class="imagen-equipo">-->
-        <div class="texto-sobre-nosotros">
-          <p>Somos un equipo de 4 estudiantes apasionados por la tecnologia y la creatividad. 
-            En Bollikaos unimos lo mejor de ambos mundos para ofrecer bollos personalizados a los usuarios, 
-            preparados al instante mediante un sistema automatizado controlado por una interfaz web y robots. Además, 
-            ofrecemos servicio de producción en masa para empresas. </p>
-          <p>Desde la elección del sabor hasta el seguimiento de la producción, tú tienes el control. </p>
-        </div>
-      </div>
-    </section>
+  
     
     <h2>No pierdas la oportunidad de probar los bolliKaos 🥐</h2>
     <section class="formulario"> <!-- Sección dedicada al formulario -->
@@ -103,9 +98,53 @@
     
   </main>
 
+  <footer class="footer-multicolumna">
+    <div class="footer-col">
+      <h3>PRODUCTOS DESTACADOS</h3>
+      <ul>
+        <li>✔ Bollos personalizados</li>
+        <li>✔ Ediciones limitadas</li>
+        <li>✔ Producción en masa</li>
+        <li>✔ Si eres una empresa, contactanos</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>CONTACTO</h3>
+      <ul>
+        <li>Estudiantes de la UPV 2º GIIROB</li>
+        <li>✉ contacto@bollikaos.com</li>
+        <li>📞 +34 600 123 456 </li>
+        <li>📍 Producción 100% simulada </li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>INFORMACIÓN</h3>
+      <ul>
+        <li>✔ Sobre nosotros </li>
+        <li>✔ Aviso legal </li>
+        <li>✔ Política de privacidad </li>
+        <li>✔ Condiciones de uso </li>
+        <li>✔ No aceptamos devoluciones </li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>VENTAJAS</h3>
+      <ul>
+        <li>✔ Envío gratuito</li>
+        <li>✔ Pedido fácil</li>
+        <li>✔ Seguimiento en tiempo real</li>
+        <li>✔ Automatización robótica</li>
+      </ul>
+    </div>
+  </footer>
+  <div class="footer-copy">
+    <p> © 2025 Bollikaos. Simulado y sabor al instante.</p>
+  </div>
+  
  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js"></script>
-  <script src="script.js"></script> <!-- tu lógica de envío -->
+  <script src="script.js"></script> 
   </body>
   </html>
   
+
