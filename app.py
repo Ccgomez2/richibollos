@@ -57,6 +57,9 @@ def estado():
 
 if __name__ == "__main__":
     app.run(debug=True)
+@app.route("/nosotros.html")
+def nosotros():
+    return send_from_directory(".", "nosotros.html")
 
 @app.route("/pedido", methods=["POST"])
 def nuevo_pedido():
